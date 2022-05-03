@@ -8,10 +8,10 @@ def index(request):
     # return HttpResponse('This is home page')
 
 def about(request):
-    return HttpResponse('This is about page')
+    return render(request,'about.html')
 
 def service(request):
-    return HttpResponse('We have various services')
+    return render(request,'service.html')
 
 def contact(request):
-    return HttpResponse('Welcome to Contact us page')
+    return render(request,'contact.html')
