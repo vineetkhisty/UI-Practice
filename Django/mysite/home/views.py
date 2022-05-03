@@ -11,3 +11,6 @@ def about(request):
 
 def service(request):
     return HttpResponse('We have various services')
+
+def contact(request):
+    return HttpResponse('Welcome to Contact us page')
