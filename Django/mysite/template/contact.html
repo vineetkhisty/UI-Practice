@@ -8,6 +8,7 @@
         class="d-block w-100" alt="..." height=450,width=1200>
 </div>
 <div class="container">
+   
     <!--Section: Contact v.2-->
     <section class="mb-4">
 
@@ -22,7 +23,8 @@
 
             <!--Grid column-->
             <div class="col-md-9 mb-md-0 mb-5">
-                <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                <form id="contact-form" name="contact-form" action="/contact" method="POST">
+                    {% csrf_token %}
 
                     <!--Grid row-->
                     <div class="row">
