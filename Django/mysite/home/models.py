@@ -9,6 +9,9 @@ class Contact(models.Model):
     message= models.TextField()
     date=models.DateField()
 
+    def __str__(self):
+        return self.name
+    
     #Now execute python manage.py makemigrations. This will show No changes detected.
 
     # So to solve this u need to register the model and for that go to admin.py
