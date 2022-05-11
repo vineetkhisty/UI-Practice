@@ -1,7 +1,7 @@
 import email
 from django.shortcuts import render, HttpResponse
 from datetime import datetime
-from home.models import Contact
+from home.models import Contact,Register
 from django.contrib import messages
 
 # Create your views here.
@@ -32,3 +32,14 @@ def contact(request):
         contact.save()
         messages.success(request, 'Your detail have been sent!')
     return render(request,'contact.html')
+
+def Register(request):
+    if request.method == "POST":
+
+        name1 = request.POST.get('name')
+        email1= request.POST.get('email')
+        password1=request.POST.get('password')
+        register = Register(name=name1,email=email1,password=password1,date=datetime.today())
+        register.save()
+        messages.success(request,'You are successfully registered!')
+    return render(request,'index.html')
