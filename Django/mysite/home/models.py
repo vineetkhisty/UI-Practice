@@ -13,13 +13,14 @@ class Contact(models.Model):
         return self.name
 
 class Register(models.Model):
-    name = models.CharField(max_length=122)
-    email= models.CharField(max_length=122)
-    password= models.CharField(max_length=122)
-    date=models.DateField()
+
+    name1= models.CharField(max_length=122)
+    email1= models.CharField(max_length=122)
+    password1= models.CharField(max_length=122)
+    date1=models.DateField()
 
     def __str__(self):
-        return self.name
+        return self.name1
     
     #Now execute python manage.py makemigrations. This will show No changes detected.
 

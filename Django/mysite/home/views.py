@@ -1,4 +1,5 @@
 import email
+from unicodedata import name
 from django.shortcuts import render, HttpResponse
 from datetime import datetime
 from home.models import Contact,Register
@@ -33,13 +34,14 @@ def contact(request):
         messages.success(request, 'Your detail have been sent!')
     return render(request,'contact.html')
 
-def Register(request):
+def register(request):
     if request.method == "POST":
 
-        name1 = request.POST.get('name')
-        email1= request.POST.get('email')
-        password1=request.POST.get('password')
-        register = Register(name=name1,email=email1,password=password1,date=datetime.today())
+        name2 = request.POST.get('name')
+        email2= request.POST.get('email')
+        password2=request.POST.get('password')
+        print('Name',name2)
+        register = Register(name1=name2,email1=email2,password1=password2,date1=datetime.today())
         register.save()
         messages.success(request,'You are successfully registered!')
     return render(request,'index.html')
