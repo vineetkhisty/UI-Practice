@@ -1,143 +1,296 @@
-{% extends 'base.html' %}
-
-{% block title %}Home{% endblock title %}
-
-{% block body %} 
-
-<div class="container-fluid px-0" >
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://thumbs.dreamstime.com/b/variety-gourmet-flavours-italian-ice-cream-selection-vibrant-colors-served-individual-plastic-tubs-old-rustic-39389119.jpg" class="d-block w-100" alt="..." height=400,width=400>
-          </div>
-          <div class="carousel-item">
-            <img src="https://thumbs.dreamstime.com/b/mango-mastani-milkshake-served-dryfruits-icecream-87626952.jpg" class="d-block w-100" alt="..." height=400,width=400>
-          </div>
-          <div class="carousel-item">
-            <img src="https://thumbs.dreamstime.com/b/kolkata-west-bengal-india-august-various-flavour-colorful-packed-box-kwality-walls-frozen-ice-cream-cropped-close-197114008.jpg" class="d-block w-100" alt="..." height=400,width=400>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      /* Google Font Link */
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins" , sans-serif;
+      }
+      body{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: black;
+        padding: 30px;
+      }
+      .container{
+        position: relative;
+        max-width: 850px;
+        width: 100%;
+        background: #fff;
+        padding: 40px 30px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        perspective: 2700px;
+      }
+      .container .cover{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: 50%;
+        z-index: 98;
+        transition: all 1s ease;
+        transform-origin: left;
+        transform-style: preserve-3d;
+      }
+      .container #flip:checked ~ .cover{
+        transform: rotateY(-180deg);
+      }
+       .container .cover .front,
+       .container .cover .back{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }
+      .cover .back{
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+      }
+      .container .cover::before,
+      .container .cover::after{
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: white;
+        opacity: 0.5;
+        z-index: 12;
+      }
+      .container .cover::after{
+        opacity: 0.3;
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+      }
+      .container .cover img{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        z-index: 10;
+      }
+      .container .cover .text{
+        position: absolute;
+        z-index: 130;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .cover .text .text-1,
+      .cover .text .text-2{
+        font-size: 26px;
+        font-weight: 600;
+        color: #fff;
+        text-align: center;
+      }
+      .cover .text .text-2{
+        font-size: 15px;
+        font-weight: 500;
+      }
+      .container .forms{
+        height: 100%;
+        width: 100%;
+        background: #fff;
+      }
+      .container .form-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .form-content .login-form,
+      .form-content .signup-form{
+        width: calc(100% / 2 - 25px);
+      }
+      .forms .form-content .title{
+        position: relative;
+        font-size: 24px;
+        font-weight: 500;
+        color: #333;
+      }
+      .forms .form-content .title:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 25px;
+        background: #7d2ae8;
+      }
+      .forms .signup-form  .title:before{
+        width: 20px;
+      }
+      .forms .form-content .input-boxes{
+        margin-top: 30px;
+      }
+      .forms .form-content .input-box{
+        display: flex;
+        align-items: center;
+        height: 50px;
+        width: 100%;
+        margin: 10px 0;
+        position: relative;
+      }
+      .form-content .input-box input{
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+        padding: 0 30px;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 2px solid rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+      }
+      .form-content .input-box input:focus,
+      .form-content .input-box input:valid{
+        border-color: #7d2ae8;
+      }
+      .form-content .input-box i{
+        position: absolute;
+        color: #7d2ae8;
+        font-size: 17px;
+      }
+      .forms .form-content .text{
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+      }
+      .forms .form-content .text a{
+        text-decoration: none;
+      }
+      .forms .form-content .text a:hover{
+        text-decoration: underline;
+      }
+      .forms .form-content .button{
+        color: #fff;
+        margin-top: 40px;
+      }
+      .forms .form-content .button input{
+        color: #fff;
+        background: #7d2ae8;
+        border-radius: 6px;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.4s ease;
+      }
+      .forms .form-content .button input:hover{
+        background: #5b13b9;
+      }
+      .forms .form-content label{
+        color: #5b13b9;
+        cursor: pointer;
+      }
+      .forms .form-content label:hover{
+        text-decoration: underline;
+      }
+      .forms .form-content .login-text,
+      .forms .form-content .sign-up-text{
+        text-align: center;
+        margin-top: 25px;
+      }
+      .container #flip{
+        display: none;
+      }
+      @media (max-width: 730px) {
+        .container .cover{
+          display: none;
+        }
+        .form-content .login-form,
+        .form-content .signup-form{
+          width: 100%;
+        }
+        .form-content .signup-form{
+          display: none;
+        }
+        .container #flip:checked ~ .forms .signup-form{
+          display: block;
+        }
+        .container #flip:checked ~ .forms .login-form{
+          display: none;
+        }
+      }
+      
+      </style>
+   </head>
+<body>
+  <img src="https://images.unsplash.com/photo-1629385701021-fcd568a743e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aWNlJTIwY3JlYW0lMjBjb25lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=200&q=60" alt="" >
+  <h1 style="color: white;">Welcome to Vineet's Icecream</h1>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <!--<img src="images/frontImg.jpg" alt="">-->
+        <!-- <div class="text">
+          <span class="text-1">Every new friend is a <br> new adventure</span>
+          <span class="text-2">Let's get connected</span>
+        </div> -->
       </div>
-
-</div>
-
-
-<div class="container my-3"> <h1 class="my-2 text-center" > Select from our range of icecreams</h1>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN8AXjY6TZq38PzXOJ9TSUxVrjMZqb4vykOA&usqp=CAU" class="d-block w-100" alt="..." height =225,width=100%>
-
-            {% comment %} <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div> {% endcomment %}
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8RMw3TMOjX_1NRyHYlCORM720aGP1Wc_1pA&usqp=CAU" class="d-block w-100" alt="..." height =225,width=100%>
-
-            {% comment %} <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div> {% endcomment %}
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="https://th.bing.com/th/id/OIP.VaULX77EjwRzbgy0cQyIXQHaP8?w=162&h=200&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="d-block w-100" alt="..." height =225,width=100%>
-            {% comment %} <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div> {% endcomment %}
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src=" https://th.bing.com/th/id/OIP.DNGkxPQEMDnU3KSukIKk8gHaHa?w=162&h=204&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="d-block w-100" alt="..." height =225,width=100%>
-            {% comment %} <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div> {% endcomment %}
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="https://th.bing.com/th/id/OIP.ipCQXMZhlFEP58-FwSfLMQHaGG?w=131&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="d-block w-100" alt="..." height =225,width=100%>
-            {% comment %} <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div> {% endcomment %}
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="https://th.bing.com/th/id/OIP.Jxj_VTOG7TfF1rXqK3freAHaHi?w=168&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="d-block w-100" alt="..." height =225,width=100%>
-            {% comment %} <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div> {% endcomment %}
-          </div>
-        </div>
-
-        </div>
+      <div class="back">
+        <!--<img class="backImg" src="images/backImg.jpg" alt="">-->
+        <!-- <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
+        </div> -->
       </div>
     </div>
-
-
-{% endblock body %}
-
-{% block Footer %} {% endblock Footer  %}
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+          <form action="/home">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" required>
+              </div>
+              <div class="text"><a href="#">Forgot password?</a></div>
+              <div class="button input-box">
+                <input type="submit" value="Sumbit">
+              </div>
+              <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
+            </div>
+        </form>
+      </div>
+        <div class="signup-form">
+          <div class="title">Signup</div>
+        <form action="#">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Enter your name" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" required>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Sumbit">
+              </div>
+              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+            </div>
+      </form>
+    </div>
+    </div>
+    </div>
+  </div>
+</body>
+</html>
