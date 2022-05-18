@@ -67,9 +67,17 @@ def login(request):
        for regdata in registerentry.iterator():
             if username == regdata.email1:
                 if regdata.password1 == password:
-                    messages.success(request, 'Login Successful!')
+                    messages.success(request, 'Login Successful!Welcome,'+ regdata.name1)
                     return render(request, 'home.html')
             
                 else:
                     messages.error(request,"Invalid username or password!")
                     return render(request, 'index.html')
+
+def resetpassword(request):
+    print("Request Method:",request.method)
+    return render(request, 'resetpassword.html')
+
+def emailsent(request):
+    if request.method == "POST":
+        return render(request, 'emailsent.html')
