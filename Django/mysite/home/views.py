@@ -6,6 +6,8 @@ from datetime import datetime
 # from sympy import re
 from home.models import Contact, Register
 from django.contrib import messages
+from django.contrib.auth import authenticate,login
+
 
 # Create your views here.
 
@@ -58,18 +60,16 @@ def register(request):
 
 def login(request):
     if request.method == "POST":
-
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-
-        registerentry = Register.objects.all()
-
-        for regdata in registerentry:
-            if regdata.email1 == email:
+       username = request.POST.get('email')
+       password = request.POST.get('password')
+       registerentry = Register.objects.all()
+       print(type(registerentry))
+       for regdata in registerentry.iterator():
+            if username == regdata.email1:
                 if regdata.password1 == password:
-                 messages.success(request, 'Login Successful!')
-                 return render(request, 'home.html')
-            else:
-                messages.error(request,"Invalid username or password!")
-                return render(request, 'index.html')
-
+                    messages.success(request, 'Login Successful!')
+                    return render(request, 'home.html')
+            
+                else:
+                    messages.error(request,"Invalid username or password!")
+                    return render(request, 'index.html')
