@@ -75,9 +75,31 @@ def login(request):
                     return render(request, 'index.html')
 
 def resetpassword(request):
-    print("Request Method:",request.method)
     return render(request, 'resetpassword.html')
 
-def emailsent(request):
+
+def password_reset_done(request):
     if request.method == "POST":
-        return render(request, 'emailsent.html')
+        email = request.POST.get('email')
+        newpassword =request.POST.get('password')
+        confirmpassword = request.POST.get('confirmpassword')
+        registerentry = Register.objects.get(email1=email)
+        if registerentry is not None:
+            if email == registerentry.email1:
+                if registerentry.password1 == newpassword:
+                    messages.error(request, 'old and new password are same please choose a new one')
+                    return render(request, 'resetpassword.html')
+                    
+                else:
+                    if confirmpassword == newpassword:
+                        registerentry.password1 = newpassword
+                        registerentry.save()
+                        messages.info(request,"Your password has been changed successfully!")
+                        return render(request, 'password_reset_done.html')
+                    else:
+                        messages.error(request, 'Passwords does not match')
+                        return render(request, 'resetpassword.html')
+        else:
+            messages.error(request, 'Email does not match')
+            return render(request, 'resetpassword.html')
+        # return render(request, 'password_reset_done.html')
