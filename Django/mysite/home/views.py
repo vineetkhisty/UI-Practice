@@ -6,7 +6,9 @@ from datetime import datetime
 # from sympy import re
 from home.models import Contact, Register
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth.forms import AuthenticationForm
+# from django.shortcuts import render_to_response
+# from django.template import RequestContext
 
 
 # Create your views here.
@@ -59,6 +61,9 @@ def register(request):
 
 
 def login(request):
+
+    # fm = AuthenticationForm()
+    # return render(request,"index.html",{'form':fm})
     if request.method == "POST":
        username = request.POST.get('email')
        password = request.POST.get('password')
@@ -67,12 +72,18 @@ def login(request):
        for regdata in registerentry.iterator():
             if username == regdata.email1:
                 if regdata.password1 == password:
+                    Name = regdata.name1
+                    # print(Name)
                     messages.success(request, 'Login Successful!Welcome,'+ regdata.name1)
-                    return render(request, 'home.html')
+                    profile(Name,request)
+                    # return render(request, 'home.html')
+                    context = {'Name': Name}
+                    return render(request,'home.html',context)
             
                 else:
                     messages.error(request,"Invalid username or password!")
                     return render(request, 'index.html')
+    
 
 def resetpassword(request):
     return render(request, 'resetpassword.html')
@@ -103,3 +114,9 @@ def password_reset_done(request):
             messages.error(request, 'Email does not match')
             return render(request, 'resetpassword.html')
         # return render(request, 'password_reset_done.html')
+
+def profile(Name1,request):
+    Name = Name1
+    print("profile Name:",Name)
+    context = {'Name': Name}
+    return render(request,'profile.html',context)

@@ -46,7 +46,7 @@
                   Logged IN
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="/profile">Profile</a></li>
                   <li><a class="dropdown-item" href="/">SignOut</a></li>
                   {% comment %} <li><a class="dropdown-item" href="#">Something else here</a></li> {% endcomment %}
                 </ul>
@@ -66,6 +66,8 @@
       {% endif %}
 
       {% block body %}{% endblock body  %}
+
+      {% block head %}{% endblock head  %}
 
     {% block Footer %} {% endblock Footer  %}
         <!-- Footer -->
