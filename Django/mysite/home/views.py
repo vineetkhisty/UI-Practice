@@ -1,5 +1,6 @@
 import email
 from unicodedata import name
+from django import template
 from django.shortcuts import render, HttpResponse
 from datetime import datetime
 
@@ -75,7 +76,7 @@ def login(request):
                     Name = regdata.name1
                     # print(Name)
                     messages.success(request, 'Login Successful!Welcome,'+ regdata.name1)
-                    profile(Name,request)
+                    profile(request,Name)
                     # return render(request, 'home.html')
                     context = {'Name': Name}
                     return render(request,'home.html',context)
@@ -115,8 +116,9 @@ def password_reset_done(request):
             return render(request, 'resetpassword.html')
         # return render(request, 'password_reset_done.html')
 
-def profile(Name1,request):
+def profile(request,Name1):
     Name = Name1
     print("profile Name:",Name)
-    context = {'Name': Name}
-    return render(request,'profile.html',context)
+    context = { 'Name': Name}
+    return HttpResponse(template.render(context,request))
+    # return render(request,'profile.html',context)
