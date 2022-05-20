@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 # from sympy import Max
 
 # Create your models here.
@@ -21,7 +22,11 @@ class Register(models.Model):
 
     def __str__(self):
         return self.name1
-    
+
+class UserProfile(models.Model):
+	profile_user = models.OneToOneField(User, on_delete=models.CASCADE)
+	profile_img = models.ImageField(default='images/default.png')
+
     #Now execute python manage.py makemigrations. This will show No changes detected.
 
     # So to solve this u need to register the model and for that go to admin.py

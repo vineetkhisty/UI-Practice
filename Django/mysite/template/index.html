@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
   <style>
-    /* Google Font Link */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    Google Font Link
+    /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap'); */
 
     * {
       margin: 0;
@@ -23,11 +23,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: black;
+      background: white;
       padding: 30px;
     }
 
-    .container {
+    /* .container {
       position: relative;
       max-width: 850px;
       width: 100%;
@@ -51,7 +51,7 @@
 
     .container #flip:checked~.cover {
       transform: rotateY(-180deg);
-    }
+    } 
 
     .container .cover .front,
     .container .cover .back {
@@ -239,7 +239,7 @@
 
     .container #flip {
       display: none;
-    }
+    } 
 
     @media (max-width: 730px) {
       .container .cover {
@@ -261,8 +261,8 @@
 
       .container #flip:checked~.forms .login-form {
         display: none;
-      }
-    }
+      } 
+    } */
   </style>
 </head>
 
@@ -287,7 +287,7 @@
           alt="">
         <h1 style="color: black;">Welcome to Vineet's Icecream</h1>
       </center>
-      <input type="checkbox" id="flip">
+      <input type="checkbox">
       <div class="cover">
         <div class="front">
           <!--<img src="images/frontImg.jpg" alt="">-->
@@ -309,7 +309,22 @@
         <div class="form-content">
           <div class="login-form">
             <div class="title">Login</div>
-            <form action="/login" method="POST">
+
+            <form method="post" action="/login">
+              {% csrf_token %}
+              <div>
+              <label>username</label>
+              <input type="text" name="email"></input>
+              <br>
+              <label>password</label>
+              <input type="password" name="password"></input>
+              </div>
+            
+              <div>
+              <button type="submit">login</button>
+              </div>
+            </form>
+            {% comment %} <form action="/login" method="POST">
               {% csrf_token %}
               <div class="input-boxes">
                 <div class="input-box">
@@ -326,10 +341,29 @@
                 </div>
                 <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
               </div>
-            </form>
+            </form> {% endcomment %}
           </div>
           <div class="signup-form">
-            <div class="title">Signup</div>
+            <h2>signup</h2>
+
+            <div>
+              <form method="post",action="/register">
+                {% csrf_token %}
+                <label>username</label>
+                <input type="text" name="username"></input>
+
+                <label>email</label>
+                <input type="text" name="email"></input>
+
+                <label>password</label>
+                <input type="password" name="password"></input>
+            </div>
+            <div>
+              <button type="submit">submit</button>
+              </form>
+            </div>
+
+            {% comment %} <div class="title">Signup</div>
             <form id="register-form" class="register-form" action="/register" method="POST">
               {% csrf_token %}
               <div class="input-boxes">
@@ -350,7 +384,7 @@
                 </div>
                 <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
               </div>
-            </form>
+            </form> {% endcomment %}
           </div>
         </div>
       </div>
