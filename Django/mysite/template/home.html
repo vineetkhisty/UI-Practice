@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %} 
+
+<div class="container-fluid px-0" >
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://thumbs.dreamstime.com/b/variety-gourmet-flavours-italian-ice-cream-selection-vibrant-colors-served-individual-plastic-tubs-old-rustic-39389119.jpg" class="d-block w-100" alt="..." height=400,width=400>
+          </div>
+          <div class="carousel-item">
+            <img src="https://thumbs.dreamstime.com/b/mango-mastani-milkshake-served-dryfruits-icecream-87626952.jpg" class="d-block w-100" alt="..." height=400,width=400>
+          </div>
+          <div class="carousel-item">
+            <img src="https://thumbs.dreamstime.com/b/kolkata-west-bengal-india-august-various-flavour-colorful-packed-box-kwality-walls-frozen-ice-cream-cropped-close-197114008.jpg" class="d-block w-100" alt="..." height=400,width=400>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+</div>
+
+
+<div class="container my-3"> <h1 class="my-2 text-center" > Select from our range of icecreams</h1>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN8AXjY6TZq38PzXOJ9TSUxVrjMZqb4vykOA&usqp=CAU" class="d-block w-100" alt="..." height =225,width=100%>
+
+            {% comment %} <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div> {% endcomment %}
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8RMw3TMOjX_1NRyHYlCORM720aGP1Wc_1pA&usqp=CAU" class="d-block w-100" alt="..." height =225,width=100%>
+
+            {% comment %} <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div> {% endcomment %}
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://th.bing.com/th/id/OIP.VaULX77EjwRzbgy0cQyIXQHaP8?w=162&h=200&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="d-block w-100" alt="..." height =225,width=100%>
+            {% comment %} <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div> {% endcomment %}
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src=" https://th.bing.com/th/id/OIP.DNGkxPQEMDnU3KSukIKk8gHaHa?w=162&h=204&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="d-block w-100" alt="..." height =225,width=100%>
+            {% comment %} <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div> {% endcomment %}
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://th.bing.com/th/id/OIP.ipCQXMZhlFEP58-FwSfLMQHaGG?w=131&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="d-block w-100" alt="..." height =225,width=100%>
+            {% comment %} <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div> {% endcomment %}
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://th.bing.com/th/id/OIP.Jxj_VTOG7TfF1rXqK3freAHaHi?w=168&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="d-block w-100" alt="..." height =225,width=100%>
+            {% comment %} <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div> {% endcomment %}
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+
+
+{% endblock body %}
+
+{% block Footer %} {% endblock Footer  %}
